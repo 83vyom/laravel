@@ -1,7 +1,7 @@
 <?php
 
 use App\User;
-use JWTAuth;
+//use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Illuminate\Http\Request;
 use App\Http\Requests;

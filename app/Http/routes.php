@@ -22,6 +22,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('adarsh', function(){return 'just simple';});
+
 Route::group(['prefix' => 'api/v1'], function(){
 	Route::get('test', function(){
         return 'awesome';

@@ -16,6 +16,8 @@ class CreateExamsTable extends Migration
             $table->increments('id');
             $table->string('exam', 10);
             $table->string('examName', 100);
+            $table->integer('catId')->unsigned();
+
             $table->foreign('catId')->references('id')->on('examCats');
         });
     }

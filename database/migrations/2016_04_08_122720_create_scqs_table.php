@@ -14,10 +14,10 @@ class CreateScqsTable extends Migration
     {
         Schema::connection('quesdb')->create('scqs', function(Blueprint $table){
             $table->increments('id');
-            $table->foreign('topicId')->references('id')->on('topics');
-            $table->foreign('courseId')->references('id')->on('courses');
-            $table->foreign('subjectId')->references('id')->on('subjects');
-            $table->foreign('quesTypeId')->references('id')->on('quesTypes');
+            $table->integer('topicId')->unsigned();
+            $table->integer('courseId')->unsigned();
+            $table->integer('subjectId')->unsigned();
+            $table->integer('quesTypeId')->unsigned();
             $table->string('scq');
             $table->string('scqImg');
             $table->string('option1');
@@ -31,6 +31,11 @@ class CreateScqsTable extends Migration
             $table->integer('rating')->default(1000);
             $table->integer('totalCount')->default(0);
             $table->integer('correctCount')->default(0);
+
+            $table->foreign('topicId')->references('id')->on('topics');
+            $table->foreign('courseId')->references('id')->on('courses');
+            $table->foreign('subjectId')->references('id')->on('subjects');
+            $table->foreign('quesTypeId')->references('id')->on('quesTypes');
 
         });
     }

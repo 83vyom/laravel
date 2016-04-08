@@ -15,6 +15,8 @@ class CreateCoursesTable extends Migration
         Schema::connection('quesdb')->create('courses', function(Blueprint $table){
             $table->increments('id');
             $table->string('course');
+            $table->integer('subjectId')->unsigned();
+
             $table->foreign('subjectId')->references('id')->on('subjects');
         });
     }

@@ -12,7 +12,7 @@ class CreateQuesTypesTable extends Migration
      */
     public function up()
     {
-        Schema::connection('quesdb')->create('quesTypes', function(){
+        Schema::connection('quesdb')->create('quesTypes', function(Blueprint $table){
             $table->increments('id');
             $table->string('quesType');
         });

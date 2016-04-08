@@ -21,9 +21,9 @@ class CreateUsersTable extends Migration
             $table->date('birthDate');
             $table->tinyInteger('standard');
             $table->string('contact',10)->nullable();
-            $table->tinyInteger('role');
-            //$table->foreign('role_id')->references('id')->on('roles');
+            $table->tinyInteger('roleId');
             $table->timestamps();
+            //$table->foreign('roleId')->references('id')->on('roles');
         });
     }
 

@@ -15,6 +15,9 @@ class CreateExamSubjectsTable extends Migration
         Schema::connection('quesdb')->create('examSubjects', function(Blueprint $table){
             $table->increments('id');
             $table->string('examSubject');
+            $table->integer('examId')->unsigned();
+            $table->integer('subjectId')->unsigned();
+
             $table->foreign('examId')->references('id')->on('exams');
             $table->foreign('subjectId')->references('id')->on('subjects');
         });

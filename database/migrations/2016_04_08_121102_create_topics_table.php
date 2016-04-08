@@ -15,7 +15,9 @@ class CreateTopicsTable extends Migration
         Schema::connection('quesdb')->create('topics', function(Blueprint $table){
             $table->increments('id');
             $table->string('topic');
-            $table->tinyInteger('order');
+            $table->integer('courseId')->unsigned();
+            $table->tinyInteger('order')->unsigned();
+
             $table->foreign('courseId')->references('id')->on('courses');
         });
     }

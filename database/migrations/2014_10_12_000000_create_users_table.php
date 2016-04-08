@@ -18,6 +18,11 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();
+            $table->date('birthDate');
+            $table->tinyInteger('standard');
+            $table->string('contact',10)->nullable();
+            $table->tinyInteger('role');
+            //$table->foreign('role_id')->references('id')->on('roles');
             $table->timestamps();
         });
     }
@@ -29,6 +34,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::connection('userdb')->drop('users');
+        Schema::connection('userdb')->dropIfExists('users');
     }
 }

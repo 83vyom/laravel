@@ -12,7 +12,7 @@ class CreateScqsTable extends Migration
      */
     public function up()
     {
-        Schema::connection('quesdb')->create('scqs', function(Blueprint $table){
+        Schema::create('scqs', function(Blueprint $table){
             $table->increments('id');
             $table->integer('topicId')->unsigned();
             $table->integer('courseId')->unsigned();
@@ -47,6 +47,6 @@ class CreateScqsTable extends Migration
      */
     public function down()
     {
-        Schema::connection('quesdb')->dropIfExists('scqs');
+        Schema::dropIfExists('scqs');
     }
 }

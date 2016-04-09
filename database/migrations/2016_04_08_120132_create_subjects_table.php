@@ -12,7 +12,7 @@ class CreateSubjectsTable extends Migration
      */
     public function up()
     {
-        Schema::connection('quesdb')->create('subjects', function(Blueprint $table){
+        Schema::create('subjects', function(Blueprint $table){
             $table->increments('id');
             $table->string('subject', 15);
         });
@@ -25,6 +25,6 @@ class CreateSubjectsTable extends Migration
      */
     public function down()
     {
-        Schema::connection('quesdb')->dropIfExists('subjects');
+        Schema::dropIfExists('subjects');
     }
 }

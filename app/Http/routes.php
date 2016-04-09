@@ -25,60 +25,19 @@ Route::get('/', function () {
 Route::get('adarsh', function(){return 'just simple';});
 
 Route::group(['prefix' => 'api/v1'], function(){
-	Route::get('test', function(){
-        return 'awesome';
-    });
 
-    Route::post('signup', function () {
-       //$credentials = request()->only('name','email','password');
-       try {
-           //$user = User::create($credentials);
-           $user = User::create([
-               'name'=> request()->get('name'),
-               'email'=> request()->get('email'),
-               'password'=>bcrypt(request()->get('password'))
-           ]);
-       } catch (Exception $e) {
-           return response()->json(['error' => 'User already exists.'], 400);
-       }
+   Route::resource('examCats', 'ExamCatsController');
 
-       $token = JWTAuth::fromUser($user);
-       return response()->json(compact('token'));
-    });
+   Route::post('signup', 'JWTAuthController@signUp');
+   Route::post('signin', 'JWTAuthController@signIn');
 
-    Route::post('signin', function () {
-       //$credentials = Input::only('email', 'password');
-       $credentials = request()->only('email','password');
+   Route::group(['middleware'=>'jwt.auth'], function(){
+       Route::get('restricted', 'JWTAuthController@restricted');
+   });
 
-       if ( ! $token = JWTAuth::attempt($credentials)) {
-           //return Response::json(false, HttpResponse::HTTP_UNAUTHORIZED);
-           return response()->json(['error'=>'sumthing went wrong'], 201);
-       }
+   //TODO::using the below destroys everything, correct it
+   /*Ropute::group(['middleware'=>'jwt.refresh'], function(){
+       Route::get('refresh', 'JWTAuthController@refresh');
+   });*/
 
-       return response()->json(compact('token'));
-    });
-
-   Route::get('restricted', ['middleware'=>'jwt.auth', function(){
-       //$token = JWTAuth::parseToken();
-       //$user = $token->authenticate();
-       $user = JWTAuth::parseToken()->authenticate();
-       return response()->json([
-           'data' => [
-               'email'=> $user->email,
-               'password'=>$user->password,
-               'registered_at' => $user->created_at->toDateTimeString()
-           ]
-       ]);
-   }]);
-
-   Route::get('refresh', ['middleware'=>'jwt.refresh', function(){
-       //TODO:: problem in refresh implementation
-       $currentToken = JWTAuth::getToken();
-       if(! $currentToken)
-       {
-           return response()->json(null);
-       }
-       $token = JWTAuth::refresh($currentToken);
-       return response()->json(compact('token'));
-   }]);
 });

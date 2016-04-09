@@ -12,7 +12,7 @@ class CreateExamsTable extends Migration
      */
     public function up()
     {
-        Schema::connection('quesdb')->create('exams', function(Blueprint $table){
+        Schema::create('exams', function(Blueprint $table){
             $table->increments('id');
             $table->string('exam', 10);
             $table->string('examName', 100);
@@ -29,6 +29,6 @@ class CreateExamsTable extends Migration
      */
     public function down()
     {
-        Schema::connection('quesdb')->dropIfExists('exams');
+        Schema::dropIfExists('exams');
     }
 }

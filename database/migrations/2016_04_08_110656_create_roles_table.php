@@ -12,7 +12,7 @@ class CreateRolesTable extends Migration
      */
     public function up()
     {
-        Schema::connection('userdb')->create('roles', function(Blueprint $table) {
+        Schema::create('roles', function(Blueprint $table) {
             $table->increments('id');
             $table->string('role', 20);
             $table->string('description');
@@ -26,6 +26,6 @@ class CreateRolesTable extends Migration
      */
     public function down()
     {
-        Schema::connection('userdb')->dropIfExists('roles');
+        Schema::dropIfExists('roles');
     }
 }

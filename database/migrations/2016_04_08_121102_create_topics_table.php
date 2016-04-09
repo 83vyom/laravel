@@ -12,7 +12,7 @@ class CreateTopicsTable extends Migration
      */
     public function up()
     {
-        Schema::connection('quesdb')->create('topics', function(Blueprint $table){
+        Schema::create('topics', function(Blueprint $table){
             $table->increments('id');
             $table->string('topic');
             $table->integer('courseId')->unsigned();
@@ -29,6 +29,6 @@ class CreateTopicsTable extends Migration
      */
     public function down()
     {
-        Schema::connection('quesdb')->dropIfExists('topics');
+        Schema::dropIfExists('topics');
     }
 }

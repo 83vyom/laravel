@@ -12,7 +12,7 @@ class CreateExamCatsTable extends Migration
      */
     public function up()
     {
-        Schema::connection('quesdb')->create('examCats', function(Blueprint $table){
+        Schema::create('examCats', function(Blueprint $table){
             $table->increments('id');
             $table->string('examCat', 15);
         });
@@ -25,6 +25,6 @@ class CreateExamCatsTable extends Migration
      */
     public function down()
     {
-        Schema::connection('quesdb')->dropIfExists('examCats');
+        Schema::dropIfExists('examCats');
     }
 }

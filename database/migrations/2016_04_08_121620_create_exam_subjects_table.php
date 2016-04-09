@@ -12,7 +12,7 @@ class CreateExamSubjectsTable extends Migration
      */
     public function up()
     {
-        Schema::connection('quesdb')->create('examSubjects', function(Blueprint $table){
+        Schema::create('examSubjects', function(Blueprint $table){
             $table->increments('id');
             $table->string('examSubject');
             $table->integer('examId')->unsigned();
@@ -30,6 +30,6 @@ class CreateExamSubjectsTable extends Migration
      */
     public function down()
     {
-        Schema::connection('quesdb')->dropIfExists('examSubjects');
+        Schema::dropIfExists('examSubjects');
     }
 }

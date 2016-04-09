@@ -15,10 +15,10 @@ class CreateTopicsTable extends Migration
         Schema::create('topics', function(Blueprint $table){
             $table->increments('id');
             $table->string('topic');
-            $table->integer('courseId')->unsigned();
+            $table->integer('course_id')->unsigned();
             $table->tinyInteger('order')->unsigned();
 
-            $table->foreign('courseId')->references('id')->on('courses');
+            $table->foreign('course_id')->references('id')->on('courses');
         });
     }
 

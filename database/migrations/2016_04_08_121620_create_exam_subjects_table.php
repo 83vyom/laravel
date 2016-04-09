@@ -12,14 +12,14 @@ class CreateExamSubjectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('examSubjects', function(Blueprint $table){
+        Schema::create('exam_subjects', function(Blueprint $table){
             $table->increments('id');
-            $table->string('examSubject');
-            $table->integer('examId')->unsigned();
-            $table->integer('subjectId')->unsigned();
+            $table->string('exam_subject');
+            $table->integer('exam_id')->unsigned();
+            $table->integer('subject_id')->unsigned();
 
-            $table->foreign('examId')->references('id')->on('exams');
-            $table->foreign('subjectId')->references('id')->on('subjects');
+            $table->foreign('exam_id')->references('id')->on('exams');
+            $table->foreign('subject_id')->references('id')->on('subjects');
         });
     }
 
@@ -30,6 +30,6 @@ class CreateExamSubjectsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('examSubjects');
+        Schema::dropIfExists('exam_subjects');
     }
 }

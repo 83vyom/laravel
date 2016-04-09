@@ -15,10 +15,10 @@ class CreateExamsTable extends Migration
         Schema::create('exams', function(Blueprint $table){
             $table->increments('id');
             $table->string('exam', 10);
-            $table->string('examName', 100);
-            $table->integer('catId')->unsigned();
+            $table->string('exam_name', 100);
+            $table->integer('cat_id')->unsigned();
 
-            $table->foreign('catId')->references('id')->on('examCats');
+            $table->foreign('cat_id')->references('id')->on('exam_cats');
         });
     }
 

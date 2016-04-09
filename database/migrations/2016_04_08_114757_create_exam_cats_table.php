@@ -12,9 +12,9 @@ class CreateExamCatsTable extends Migration
      */
     public function up()
     {
-        Schema::create('examCats', function(Blueprint $table){
+        Schema::create('exam_cats', function(Blueprint $table){
             $table->increments('id');
-            $table->string('examCat', 15);
+            $table->string('exam_cat', 15);
         });
     }
 
@@ -25,6 +25,6 @@ class CreateExamCatsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('examCats');
+        Schema::dropIfExists('exam_cats');
     }
 }

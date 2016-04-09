@@ -12,9 +12,9 @@ class CreateQuesTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('quesTypes', function(Blueprint $table){
+        Schema::create('ques_types', function(Blueprint $table){
             $table->increments('id');
-            $table->string('quesType');
+            $table->string('ques_type');
         });
     }
 
@@ -25,6 +25,6 @@ class CreateQuesTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('quesTypes');
+        Schema::dropIfExists('ques_types');
     }
 }

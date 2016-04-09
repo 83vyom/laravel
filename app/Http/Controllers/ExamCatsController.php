@@ -17,7 +17,8 @@ class ExamCatsController extends Controller
      */
     public function index()
     {
-        $examCats = DB::connection('quesdb')->table('examCats')->get();
+        //$examCats = DB::connection('quesdb')->table('examCats')->get();
+        $examCats = ExamCat::all();
         return $examCats;
     }
 
@@ -27,7 +28,7 @@ class ExamCatsController extends Controller
      */
     public function show($id)
     {
-        $examCat = quesdb.ExamCat::find($id);
+        $examCat = ExamCat::find($id);
         return response()->json([
             'data'=>$examCat
         ]);

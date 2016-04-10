@@ -26,7 +26,7 @@ Route::get('adarsh', function(){return 'just simple';});
 
 Route::group(['prefix' => 'api/v1'], function(){
 
-   Route::resource('examCats', 'ExamCatsController');
+
 
    Route::post('signup', 'JWTAuthController@signUp');
    Route::post('signin', 'JWTAuthController@signIn');
@@ -39,5 +39,12 @@ Route::group(['prefix' => 'api/v1'], function(){
    /*Ropute::group(['middleware'=>'jwt.refresh'], function(){
        Route::get('refresh', 'JWTAuthController@refresh');
    });*/
+
+   Route::resource('examCats', 'ExamCatsController');
+   Route::resource('exams', 'ExamsController');
+   Route::resource('subjects', 'SubjectsController');
+   Route::resource('courses', 'CoursesController');
+   Route::resource('topics', 'TopicsController');
+   Route::resource('scqs', 'ScqsController');
 
 });

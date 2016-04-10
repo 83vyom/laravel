@@ -6,33 +6,31 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use App\ExamCat;
-use DB;
+use App\Exam;
 
-class ExamCatsController extends Controller
+class ExamsController extends Controller
 {
     /**
-     * Shows all exam categories
+     * [index description]
      * @return [type] [description]
      */
     public function index()
     {
-        $examCats = ExamCat::all();
-        //return $examCats;
+        $exams= Exam::all();
         return response()->json([
-            'data'=>$examCats
+            'data'=>$exams
         ]);
     }
 
     /**
-     * shows specific exam categories
+     * [show description]
      * @return [type] [description]
      */
     public function show($id)
     {
-        $examCat = ExamCat::find($id);
+        $exam=Exam::find($id);
         return response()->json([
-            'data'=>$examCat
+            'data'=>$exam
         ]);
     }
 
@@ -40,34 +38,29 @@ class ExamCatsController extends Controller
      * [create description]
      * @return [type] [description]
      */
-    public function create()
-    {}
+    public function create(){}
 
     /**
      * [update description]
      * @return [type] [description]
      */
-    public function update()
-    {}
+    public function update(){}
 
     /**
      * [edit description]
      * @return [type] [description]
      */
-    public function edit()
-    {}
+    public function edit(){}
 
     /**
      * [store description]
      * @return [type] [description]
      */
-    public function store()
-    {}
+    public function store(){}
 
     /**
      * [destroy description]
      * @return [type] [description]
      */
-    public function destroy()
-    {}
+    public function destroy(){}
 }

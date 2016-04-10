@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\Topic;
+use App\Course;
 
 class TopicsController extends Controller
 {
@@ -14,9 +15,17 @@ class TopicsController extends Controller
      * [index description]
      * @return [type] [description]
      */
-    public function index()
+    public function index(Request $id)
     {
+        /*
         $topics=Topic::all();
+
+        */
+        $id = request()->only('id');
+        //TODO::make sure 'course_id' or 'courseId'
+        $topics = Topic::where('course_id', $id)
+        //TODO::confirm 'asc' for ascending
+                ->orderBy('order', 'asc');
         return response()->json([
             'data'=>$topics
         ]);

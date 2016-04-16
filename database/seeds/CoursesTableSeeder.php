@@ -10,12 +10,36 @@ class CoursesTableSeeder extends Seeder
     public function run()
     {
         // TestDummy::times(20)->create('App\Post');
-        $faker = Faker\Factory::create();
-        foreach (range(1,10) as $index) {
-            Course::create([
-                'course'=>$faker->lastName(),
-                'subjectId'=>$faker->numberBetween($min = 1, $max = 5)
-            ]);
-        }
+
+        //truncating the table
+        DB::statement('SET foreign_key_checks=0');
+        Course::truncate();
+        DB::statement('SET foreign_key_checks=1');
+
+        //inserting data
+        //TODO::insert proper data
+        DB::table('courses')->insert([
+            'course'=>'phy1',
+            'subject_id'=>'1',
+            'order'=>'1'
+        ]);
+
+        DB::table('courses')->insert([
+            'course'=>'phy2',
+            'subject_id'=>'1',
+            'order'=>'2'
+        ]);
+
+        DB::table('courses')->insert([
+            'course'=>'chm1',
+            'subject_id'=>'2',
+            'order'=>'1'
+        ]);
+
+        DB::table('courses')->insert([
+            'course'=>'mth1',
+            'subject_id'=>'3',
+            'order'=>'1'
+        ]);
     }
 }

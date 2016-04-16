@@ -16,6 +16,7 @@ class CreateCoursesTable extends Migration
             $table->increments('id');
             $table->string('course');
             $table->integer('subject_id')->unsigned();
+            $table->integer('order')->unsigned();
 
             $table->foreign('subject_id')->references('id')->on('subjects');
         });

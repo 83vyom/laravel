@@ -17,10 +17,11 @@ class TopicsController extends Controller
      */
     public function index(Request $id)
     {
-        /*
         $topics=Topic::all();
-
-        */
+        return response()->json([
+            'data'=>$topics
+        ]);
+        /*
         $id = request()->only('id');
         //TODO::make sure 'course_id' or 'courseId'
         $topics = Topic::where('course_id', $id)
@@ -28,7 +29,7 @@ class TopicsController extends Controller
                 ->orderBy('order', 'asc');
         return response()->json([
             'data'=>$topics
-        ]);
+        ]);*/
     }
 
     /**

@@ -26,8 +26,6 @@ Route::get('adarsh', function(){return 'just simple';});
 
 Route::group(['prefix' => 'api/v1'], function(){
 
-
-
    Route::post('signup', 'JWTAuthController@signUp');
    Route::post('signin', 'JWTAuthController@signIn');
 
@@ -40,11 +38,16 @@ Route::group(['prefix' => 'api/v1'], function(){
        Route::get('refresh', 'JWTAuthController@refresh');
    });*/
 
+   //intermediate specific routes
+   Route::get('exam_cats/{cat}/exams', 'ExamsController@index');
+   Route::get('exams/{id}/subjects', 'ExamSubjectsController@index');//TODO::
+
+   //initial general routes
    Route::resource('examCats', 'ExamCatsController');
    Route::resource('exams', 'ExamsController');
    Route::resource('subjects', 'SubjectsController');
    Route::resource('courses', 'CoursesController');
    Route::resource('topics', 'TopicsController');
    Route::resource('scqs', 'ScqsController');
-
+   Route::get('course/{id}/topics', 'TopicsController@index');
 });

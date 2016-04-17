@@ -14,7 +14,7 @@ class SubjectsController extends Controller
      * [index description]
      * @return [type] [description]
      */
-    public function index()
+    public function index($id)
     {
         $subjects= Subject::all();
         return response()->json([

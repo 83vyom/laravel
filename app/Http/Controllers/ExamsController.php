@@ -14,9 +14,9 @@ class ExamsController extends Controller
      * [index description]
      * @return [type] [description]
      */
-    public function index()
+    public function index($id)
     {
-        $exams= Exam::all();
+        $exams= Exam::where('exam_cat_id',$id)->get();
         return response()->json([
             'data'=>$exams
         ]);

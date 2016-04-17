@@ -8,6 +8,7 @@ use App\Http\Requests;
 
 use App\Topic;
 use App\Course;
+//use DB;
 
 class TopicsController extends Controller
 {
@@ -15,21 +16,16 @@ class TopicsController extends Controller
      * [index description]
      * @return [type] [description]
      */
-    public function index(Request $id)
+    public function index($id)
     {
-        $topics=Topic::all();
+        //$id = $request->input('id');
+        //$id = (int)$id;
+        
+        $topics = Topic::where('course_id',$id)->orderBy('order','asc')->get();
+        //$topics= DB::table('topics')->where('course_id', '1')->get();
         return response()->json([
             'data'=>$topics
         ]);
-        /*
-        $id = request()->only('id');
-        //TODO::make sure 'course_id' or 'courseId'
-        $topics = Topic::where('course_id', $id)
-        //TODO::confirm 'asc' for ascending
-                ->orderBy('order', 'asc');
-        return response()->json([
-            'data'=>$topics
-        ]);*/
     }
 
     /**
